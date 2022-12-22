@@ -3,12 +3,32 @@ guid: 3a3760ae290cafb44844c1233531d068
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bamboo
+    second: {instanceID: 0}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bamboo01_lambert1_BaseColor
+    second: {fileID: 2800000, guid: a882f17b164bffa4dba608fe098ccca1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bamboo01_lambert1_Normal
+    second: {fileID: 2800000, guid: 6674a9eda8f953740bce269c86df8704, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bamboo01_lambert1_Roughness
+    second: {fileID: 2800000, guid: db6592bde59455d4cb8af5192bccb210, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
