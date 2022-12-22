@@ -9,9 +9,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject _spawn2;
     [SerializeField] GameObject _spawn3;
 
-    // 生成するプレハブ格納用
-    public GameObject PrefabCube;
-
 
     private void Start()
     {

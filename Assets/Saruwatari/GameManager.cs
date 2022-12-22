@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _trunCount = 0;
-        _one.enabled = true;
+        _one.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
