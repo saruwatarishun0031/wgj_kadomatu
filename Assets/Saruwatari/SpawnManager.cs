@@ -1,49 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] GameObject _spawn1;
+    [SerializeField] GameObject _spawn2;
+    [SerializeField] GameObject _spawn3;
 
     // 生成するプレハブ格納用
     public GameObject PrefabCube;
 
-    public int x;
-    public int y;
-    public int z;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (GameManager.Instance._oneTime == true)
-        {
-            Vector3 pos = new Vector3(x,y,z);
 
-            // プレハブを生成
-            Instantiate(PrefabCube, pos, Quaternion.identity);
-            GameManager.Instance._oneTime = false;
-            Debug.Log("1");
-        }
+        //一本目の竹
+        Transform pos1 = _spawn1.transform;//new Vector3(x,y,z);
+        var parent1 = pos1;
 
-        if (GameManager.Instance._twoTime == true)
-        {
-            Vector3 pos = new Vector3(x, y, z);
+        // プレハブを生成
+        Instantiate(GameManager.Instance._take[0], pos1.position, Quaternion.identity, parent1);
 
-            // プレハブを生成
-            Instantiate(PrefabCube, pos, Quaternion.identity);
-            GameManager.Instance._twoTime = false;
-            Debug.Log("2");
-        }
+        //二本目の竹
+        Transform pos2 = _spawn2.transform;//new Vector3(x,y,z);
+        var parent2 = pos2;
 
-        if (GameManager.Instance._threeTime == true)
-        {
-            Vector3 pos = new Vector3(x, y, z);
+        // プレハブを生成
+        Instantiate(GameManager.Instance._take[1], pos2.position, Quaternion.identity, parent2);
 
-            // プレハブを生成
-            Instantiate(PrefabCube, pos, Quaternion.identity);
-            GameManager.Instance._threeTime = false;
-            Debug.Log("3");
-        }
+        //三本目の竹
+        Transform pos3 = _spawn3.transform;//new Vector3(x,y,z);
+        var parent3 = pos3;
 
+        // プレハブを生成
+        Instantiate(GameManager.Instance._take[2], pos3.position, Quaternion.identity, parent3);
     }
+
+
 }
