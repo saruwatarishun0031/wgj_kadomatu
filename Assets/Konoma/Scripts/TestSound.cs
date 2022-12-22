@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +8,16 @@ public class TestSound : MonoBehaviour
     SoundManager _soundManager;
 
     [SerializeField]
-    [Header("BGMName")]
+    [Header("使いたいBGMの名前")]
     string _bgmName;
 
     [SerializeField]
-    [Header("SEName")]
+    [Header("使いたいSEの名前")]
     string _seName;
+
+    [SerializeField]
+    int _count;
+
     void Start()
     {
         _soundManager.PlayBGM(_bgmName);
