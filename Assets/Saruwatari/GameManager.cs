@@ -14,8 +14,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> _take = new List<GameObject>();
 
     public bool _oneTime = false;
-    public bool _twoTime = false;
-    public bool _threeTime = false;
+    
 
     
 
@@ -45,7 +44,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Turn();
+       
         
     }
 
@@ -55,28 +54,18 @@ public class GameManager : MonoBehaviour
     }
     
 
-    void Turn()
+    public void TurnPurasu()
     {
-        if (_oneTime == true)
-        {
-            _trunCount += 1;
-            _oneTime = false;
+        _trunCount += 1;
 
-        }
-        if (_twoTime == true)
+        if (_trunCount == 3)
         {
-            _trunCount += 1;
-            _twoTime = false;
-        }
-        if (_threeTime == true)
-        {
-            _trunCount += 1;
-            _threeTime = false;
+            StartCoroutine(Rizaruto());
         }
     }
     private IEnumerator Rizaruto()
     {
-            yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(sceneName);
     }
 
