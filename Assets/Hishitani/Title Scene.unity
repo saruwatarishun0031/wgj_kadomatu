@@ -1308,14 +1308,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4893963828357921491, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963828357921491, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7b68dfdc48b59d74cbd1310885bc0940, type: 3}
     - target: {fileID: 4893963828529966611, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1404,73 +1396,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4893963828529966615, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907349, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907349, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907350, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907350, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4893963829239907350, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 699667847}
-    - target: {fileID: 4893963829239907350, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907350, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907350, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907350, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907350, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907351, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907351, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 222849b060322b840b61d1d39cf34210, type: 3}
-    - target: {fileID: 4893963829239907351, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_RaycastPadding.w
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907351, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_RaycastPadding.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907351, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_RaycastPadding.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893963829239907351, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
-      propertyPath: m_RaycastPadding.z
-      value: 200
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b9f0715f38384b4db1ff2493f57e1c5, type: 3}
