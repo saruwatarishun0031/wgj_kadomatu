@@ -153,9 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawn1: {fileID: 505848752}
-  _spawn2: {fileID: 505848752}
-  _spawn3: {fileID: 542790970}
-  PrefabCube: {fileID: 0}
+  _spawn2: {fileID: 542790970}
+  _spawn3: {fileID: 703508843}
 --- !u!4 &181296372
 Transform:
   m_ObjectHideFlags: 0
