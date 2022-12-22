@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Image _one;
-    [SerializeField] Image _two;
-    [SerializeField] Image _three;
+    [SerializeField] Text _one;
+    [SerializeField] Text _two;
+    [SerializeField] Text _three;
     [SerializeField] Button _startButton;
+
+    public List<GameObject> _take = new List<GameObject>();
 
     public bool _oneTime = false;
     public bool _twoTime = false;
     public bool _threeTime = false;
+
+    
 
     public int _trunCount;
     //シングルトンパターン（簡易型、呼び出される）
@@ -40,41 +44,32 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Turn();
-    }
-
-    void OneTime()
-    {
-        _oneTime = true;
         
     }
 
-    void TwoTime()
+    public void TakesSet(GameObject take) 
     {
-        _twoTime = true;
-        
+        _take.Add(take);
     }
-    void ThreeTime()
-    {
-        _threeTime = true;
-    }
+    
 
     void Turn()
     {
         if (_oneTime == true)
         {
             _trunCount += 1;
+            _oneTime = false;
+
         }
         if (_twoTime == true)
         {
             _trunCount += 1;
+            _twoTime = false;
         }
         if (_threeTime == true)
         {
             _trunCount += 1;
-        }
-        if (_trunCount == 3)
-        {
-            Rizaruto();
+            _threeTime = false;
         }
     }
     private IEnumerator Rizaruto()
