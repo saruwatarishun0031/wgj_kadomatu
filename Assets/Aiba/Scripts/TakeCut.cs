@@ -26,10 +26,10 @@ public class TakeCut : MonoBehaviour
     [SerializeField] List<float> _distance = new List<float>();
 
     [Header("上の方を切った時の竹のオブジェクト。誤差の少ないバージョンから入れる")]
-    [SerializeField] List<GameObject> _PlussTake = new List<GameObject>();
+    [SerializeField] List<GameObject> _shortTake = new List<GameObject>();
 
     [Header("下の方を切った時の竹のオブジェクト。誤差の少ないバージョンから入れる")]
-    [SerializeField] List<GameObject> _MinussTake = new List<GameObject>();
+    [SerializeField] List<GameObject> _longTake = new List<GameObject>();
 
     [Header("強制終了させる時間")]
     [SerializeField] float _endTime;
@@ -43,6 +43,9 @@ public class TakeCut : MonoBehaviour
     [SerializeField] SpownTake _spownTake;
     [SerializeField] GameManager _gm;
 
+
+
+    private bool _isCut = false;
     void Start()
     {
 
@@ -51,19 +54,20 @@ public class TakeCut : MonoBehaviour
 
     void Update()
     {
-        if(_spownTake.IsSpown)
+        if (_spownTake.IsSpown)
         {
             _countTime += Time.deltaTime;
-            if(_countTime>=_endTime)
+            if (_countTime >= _endTime && !_isCut)
             {
+                _isCut = true;
+                _countTime = 0;
                 _cutButtun.SetActive(false);
 
                 //出した竹を消す
                 var take = GameObject.FindGameObjectWithTag(_takeTagName);
                 Destroy(take);
-
                 _gm.TakesSet(_noCutTake);
-                SceneManager.LoadScene("Aiba");
+                _gm.TurnPurasu();
             }
         }
     }
@@ -74,50 +78,63 @@ public class TakeCut : MonoBehaviour
 
         //切り口と元の場所の差を求める
         var checkPointTake = GameObject.FindGameObjectWithTag(_takeCatPositionTagName);
-       　//切り口との差
-        float distanceOfCutToCheckPoint = checkPointTake.transform.position.y - 0;
+        //切り口との差
+
+
+        float distanceOfCutToCheckPoint = checkPointTake.transform.position.y;
 
         //出した竹を消す
         var take = GameObject.FindGameObjectWithTag(_takeTagName);
         Destroy(take);
 
         //パーフェクトかどうか求める
-        if (distanceOfCutToCheckPoint < _parfectCutGosa && distanceOfCutToCheckPoint > -_parfectCutGosa)
-        {
-            _gm.TakesSet(_parfectCutTake);
-            _gm.TurnPurasu();
-            return;
-        }
+        //if (distanceOfCutToCheckPoint < _parfectCutGosa && distanceOfCutToCheckPoint > -_parfectCutGosa)
+        //{
+        //    _isCut = true;
+        //    _gm.TakesSet(_parfectCutTake);
+        //    _gm.TurnPurasu();
+        //    return;
+        //}
 
-        //切った所が上の方だったら
-        if (distanceOfCutToCheckPoint > _parfectCutGosa)
+        //切った所が、ポイントより下の方だったら  (値は+)
+        if (distanceOfCutToCheckPoint >= 0)
         {
-            List<float> go = new List<float>();
-
-            foreach (var a in _distance)
+            for (int i = 0; i < _distance.Count - 1; i++)
             {
-                go.Add(a - distanceOfCutToCheckPoint);
+                if (_distance[i] < distanceOfCutToCheckPoint && distanceOfCutToCheckPoint < _distance[i + 1])
+                {
+                    //一番誤差の小さいインデックス
+                    _gm.TakesSet(_shortTake[i]);
+                    _gm.TurnPurasu();
+                    _isCut = true;
+                    return;
+                }
             }
-            //一番誤差の小さいインデックス
-            int num = go.IndexOf(go.Min());
-            _gm.TakesSet(_PlussTake[num]);
-            _gm.TurnPurasu();
         }
-        //切ったのが下のほうだったら
-        else if (distanceOfCutToCheckPoint < -_parfectCutGosa)
+        //切った所が、ポイントより下の方だったら (値は-)
+        else if (distanceOfCutToCheckPoint < 0)
         {
-            List<float> go = new List<float>();
-
-            foreach (var a in _distance)
+            for (int i = 0; i < _distance.Count - 1; i++)
             {
-                go.Add( Mathf.Abs(a - distanceOfCutToCheckPoint));
+                if (-_distance[i] > distanceOfCutToCheckPoint && distanceOfCutToCheckPoint > -_distance[i + 1])
+                {
+                    _gm.TakesSet(_longTake[i]);
+                    _gm.TurnPurasu();
+                    _isCut = true;
+                    return;
+                }
             }
-            //一番誤差の小さいインデックス
-            int num = go.IndexOf(go.Min());
-            _gm.TakesSet(_PlussTake[num]);
-            _gm.TurnPurasu();
         }
 
+        _isCut = true;
+        _countTime = 0;
+        _cutButtun.SetActive(false);
+
+        //出した竹を消す
+        var takes = GameObject.FindGameObjectWithTag(_takeTagName);
+        Destroy(take);
+        _gm.TakesSet(_noCutTake);
+        _gm.TurnPurasu();
     }
 
 
