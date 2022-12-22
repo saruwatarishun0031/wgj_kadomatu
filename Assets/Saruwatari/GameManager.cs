@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(sceneName);
+        _trunCount = 0;
     }
 
 

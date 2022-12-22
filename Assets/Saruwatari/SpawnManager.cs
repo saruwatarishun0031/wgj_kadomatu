@@ -37,6 +37,8 @@ public class SpawnManager : MonoBehaviour
         // ƒvƒŒƒnƒu‚ğ¶¬
         var go3 = Instantiate(GameManager._take[2], pos3.position, Quaternion.identity, parent3);
         go3.transform.eulerAngles = r;
+
+        GameManager._take.Clear();
     }
 
 
