@@ -7,6 +7,10 @@ public class CreditManager : MonoBehaviour
     [Header("クレジットのキャンバス")]
     Canvas _cureditCanvas;
 
+    private void Start()
+    {
+        _cureditCanvas.enabled = false;
+    }
     public void OnCredit()
     {
         _cureditCanvas.enabled = true;
