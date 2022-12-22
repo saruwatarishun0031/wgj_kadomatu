@@ -116,7 +116,7 @@ AnimationClip:
   m_Events:
   - time: 1
     functionName: Load
-    data: "\u30B7\u30FC\u30F3\u540D\u3092\u5165\u308C\u308B"
+    data: Redume Scene
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

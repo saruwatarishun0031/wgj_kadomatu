@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text _one;
     [SerializeField] Text _two;
     [SerializeField] Text _three;
-    [SerializeField] Button _startButton;
+    [SerializeField] string sceneName;
 
     public List<GameObject> _take = new List<GameObject>();
 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _trunCount = 0;
+        _one.enabled = true;
     }
 
     // Update is called once per frame
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator Rizaruto()
     {
             yield return new WaitForSeconds(2f);
-
+        SceneManager.LoadScene(sceneName);
     }
 
 
