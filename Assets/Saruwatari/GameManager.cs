@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(Rizaruto());
         }
+        else
+        {
+            SceneManager.LoadScene("Aiba");
+        }
     }
     private IEnumerator Rizaruto()
     {

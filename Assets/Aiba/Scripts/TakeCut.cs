@@ -85,7 +85,7 @@ public class TakeCut : MonoBehaviour
         if (distanceOfCutToCheckPoint < _parfectCutGosa && distanceOfCutToCheckPoint > -_parfectCutGosa)
         {
             _gm.TakesSet(_parfectCutTake);
-            SceneManager.LoadScene("Aiba");
+            _gm.TurnPurasu();
             return;
         }
 
@@ -101,6 +101,7 @@ public class TakeCut : MonoBehaviour
             //一番誤差の小さいインデックス
             int num = go.IndexOf(go.Min());
             _gm.TakesSet(_PlussTake[num]);
+            _gm.TurnPurasu();
         }
         //切ったのが下のほうだったら
         else if (distanceOfCutToCheckPoint < -_parfectCutGosa)
@@ -114,9 +115,9 @@ public class TakeCut : MonoBehaviour
             //一番誤差の小さいインデックス
             int num = go.IndexOf(go.Min());
             _gm.TakesSet(_PlussTake[num]);
+            _gm.TurnPurasu();
         }
 
-        SceneManager.LoadScene("Aiba");
     }
 
 
