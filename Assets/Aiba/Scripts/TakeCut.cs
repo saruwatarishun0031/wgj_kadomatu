@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class TakeCut : MonoBehaviour
 {
+    [SerializeField] GameObject _fade;
+    [SerializeField] SoundManager _sM;
+
+    [SerializeField] string _cutSoundName = "";
+
+
     [SerializeField] GameObject _startArm;
     [SerializeField] GameObject _endArm;
 
@@ -71,14 +77,13 @@ public class TakeCut : MonoBehaviour
                 _countTime = 0;
                 _cutButtun.SetActive(false);
 
-                _startArm.SetActive(false);
-                _endArm.SetActive(true);
+                _fade.SetActive(true);
 
                 //èoÇµÇΩí|Çè¡Ç∑
                 var take = GameObject.FindGameObjectWithTag(_takeTagName);
                 Destroy(take);
                 _gm.TakesSet(_noCutTake);
-                _gm.TurnPurasu();
+                StartCoroutine(NonCutNext());
             }
         }
     }
@@ -114,6 +119,7 @@ public class TakeCut : MonoBehaviour
             {
                 if (_distance[i] < distanceOfCutToCheckPoint && distanceOfCutToCheckPoint < _distance[i + 1])
                 {
+                    _sM.PlaySE(_cutSoundName);
                     _ennsyutu.SetActive(true);
                     StartCoroutine(Next());
                     _startArm.SetActive(false);
@@ -134,6 +140,7 @@ public class TakeCut : MonoBehaviour
             {
                 if (-_distance[i] > distanceOfCutToCheckPoint && distanceOfCutToCheckPoint > -_distance[i + 1])
                 {
+                    _sM.PlaySE(_cutSoundName);
                     _ennsyutu.SetActive(true);
                     StartCoroutine(Next());
                     _gm.TakesSet(_longTake[i]);
@@ -148,13 +155,14 @@ public class TakeCut : MonoBehaviour
         _isCut = true;
         _countTime = 0;
         _cutButtun.SetActive(false);
-        _startArm.SetActive(false);
-        _endArm.SetActive(true);
+
+        _fade.SetActive(true);
+
         //èoÇµÇΩí|Çè¡Ç∑
         var takes = GameObject.FindGameObjectWithTag(_takeTagName);
-        Destroy(take);
+        Destroy(takes);
         _gm.TakesSet(_noCutTake);
-        _gm.TurnPurasu();
+        StartCoroutine(NonCutNext());
     }
 
     IEnumerator Next()
@@ -165,9 +173,12 @@ public class TakeCut : MonoBehaviour
         yield return new WaitForSeconds(2);
         _bumberrboom.SetActive(false);
         _gm.TurnPurasu();
-
     }
 
-
+    IEnumerator NonCutNext()
+    {
+        yield return new WaitForSeconds(ensyutuTime);
+        _gm.TurnPurasu();
+    }
 
 }

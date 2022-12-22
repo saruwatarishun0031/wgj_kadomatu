@@ -20,8 +20,10 @@ public class SpownTake : MonoBehaviour
     [SerializeField] float _maxTime;
 
 
+
     [Header("’|‚ğØ‚éƒ{ƒ^ƒ“")]
     [SerializeField] GameObject _cutButtun;
+
 
     private float _timeLimit;
     private float _countTime = 0;
