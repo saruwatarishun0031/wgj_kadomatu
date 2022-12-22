@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class TakeCut : MonoBehaviour
 {
+    [SerializeField] GameObject _startArm;
+    [SerializeField] GameObject _endArm;
+
+    [SerializeField] GameObject _bumberrboom;
+
     [Header("竹Tagの名前")]
     [SerializeField] string _takeTagName = "";
 
@@ -44,6 +49,9 @@ public class TakeCut : MonoBehaviour
     [SerializeField] GameManager _gm;
 
 
+    [SerializeField] GameObject _ennsyutu;
+
+    [SerializeField] float ensyutuTime = 1;
 
     private bool _isCut = false;
     void Start()
@@ -62,6 +70,9 @@ public class TakeCut : MonoBehaviour
                 _isCut = true;
                 _countTime = 0;
                 _cutButtun.SetActive(false);
+
+                _startArm.SetActive(false);
+                _endArm.SetActive(true);
 
                 //出した竹を消す
                 var take = GameObject.FindGameObjectWithTag(_takeTagName);
@@ -103,10 +114,15 @@ public class TakeCut : MonoBehaviour
             {
                 if (_distance[i] < distanceOfCutToCheckPoint && distanceOfCutToCheckPoint < _distance[i + 1])
                 {
+                    _ennsyutu.SetActive(true);
+                    StartCoroutine(Next());
+                    _startArm.SetActive(false);
+                    _endArm.SetActive(true);
                     //一番誤差の小さいインデックス
                     _gm.TakesSet(_shortTake[i]);
-                    _gm.TurnPurasu();
                     _isCut = true;
+
+
                     return;
                 }
             }
@@ -118,9 +134,12 @@ public class TakeCut : MonoBehaviour
             {
                 if (-_distance[i] > distanceOfCutToCheckPoint && distanceOfCutToCheckPoint > -_distance[i + 1])
                 {
+                    _ennsyutu.SetActive(true);
+                    StartCoroutine(Next());
                     _gm.TakesSet(_longTake[i]);
-                    _gm.TurnPurasu();
                     _isCut = true;
+                    _startArm.SetActive(false);
+                    _endArm.SetActive(true);
                     return;
                 }
             }
@@ -129,7 +148,8 @@ public class TakeCut : MonoBehaviour
         _isCut = true;
         _countTime = 0;
         _cutButtun.SetActive(false);
-
+        _startArm.SetActive(false);
+        _endArm.SetActive(true);
         //出した竹を消す
         var takes = GameObject.FindGameObjectWithTag(_takeTagName);
         Destroy(take);
@@ -137,6 +157,16 @@ public class TakeCut : MonoBehaviour
         _gm.TurnPurasu();
     }
 
+    IEnumerator Next()
+    {
+        yield return new WaitForSeconds(ensyutuTime);
+        _ennsyutu.SetActive(false);
+        _bumberrboom.SetActive(true);
+        yield return new WaitForSeconds(2);
+        _bumberrboom.SetActive(false);
+        _gm.TurnPurasu();
+
+    }
 
 
 

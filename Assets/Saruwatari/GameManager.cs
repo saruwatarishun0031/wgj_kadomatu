@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Aiba");
+            SceneManager.LoadScene("Game");
         }
     }
     private IEnumerator Rizaruto()
