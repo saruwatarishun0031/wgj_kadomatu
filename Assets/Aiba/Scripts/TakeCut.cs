@@ -96,9 +96,9 @@ public class TakeCut : MonoBehaviour
         var checkPointTake = GameObject.FindGameObjectWithTag(_takeCatPositionTagName);
         //切り口との差
 
-
+           
         float distanceOfCutToCheckPoint = checkPointTake.transform.position.y;
-
+        Debug.Log(distanceOfCutToCheckPoint);
         //出した竹を消す
         var take = GameObject.FindGameObjectWithTag(_takeTagName);
         Destroy(take);
@@ -115,6 +115,7 @@ public class TakeCut : MonoBehaviour
         //切った所が、ポイントより下の方だったら  (値は+)
         if (distanceOfCutToCheckPoint >= 0)
         {
+
             for (int i = 0; i < _distance.Count - 1; i++)
             {
                 if (_distance[i] < distanceOfCutToCheckPoint && distanceOfCutToCheckPoint < _distance[i + 1])
